@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    //parameters {
-    //    string(name: 'SPEC', defaultValue: 'cypress/e2e/**/**', description: 'Ej: cypress/integration/pom/*.spec.js')
-    //    choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
-    //}
+    parameters {
+        string(name: 'SCRIPT', defaultValue: 'cypress/e2e/**/**', description: 'Script da eseguire. Il valore di Default esegue tutto quello presente nella directory e2e')
+        choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Browser su cui si vuole eseguire lo script')
+    }
     
     stages {
         
@@ -19,7 +19,8 @@ pipeline {
                 //bat "npm i"
                 //bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
                 sh "npm i"
-                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                //sh "npx cypress run --browser ${BROWSER} --spec ${SCRIPT}"
+                sh "npx cypress run"
             }
         }
         

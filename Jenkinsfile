@@ -18,6 +18,8 @@ pipeline {
                 echo "Testing the application"
                 //bat "npm i"
                 //bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                sh "npm i"
+                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
             }
         }
         

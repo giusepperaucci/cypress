@@ -9,13 +9,13 @@ pipeline {
         
         stage('Build'){
             steps {
-                echo "Building the application"
+                echo "Building della Applicazione"
             }
         }
         
         stage('Testing') {
             steps {
-                echo "Testing the application"
+                echo "Testing della Applicazione"
                 //bat "npm i"
                 //bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
                 sh "npm i"
@@ -26,15 +26,16 @@ pipeline {
         
         stage('Deploy'){
             steps {
-                echo "Deploying the application"
+                echo "Deploying della Applicazione"
             }
         }
     }
 
     post {
         always {
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-            deleteDir()
+            echo "Pubblicazione Report HTML"
+            //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+            //deleteDir()
         }
     }
 }

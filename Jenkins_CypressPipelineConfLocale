@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    tools {nodejs "NodeJS14"}
+    stages {
+        stage ('Download_Script_GIT') {
+            steps {
+                git branch: 'main', url: 'https://github.com/giusepperaucci/cypress'
+            }
+        }
+        
+        stage ('Installa_Pacchetto_NPM') {
+            steps {
+                bat 'npm install'
+            }
+        }
+        
+        stage ('Esegui_Script_Test') {
+            steps {
+                bat 'npx cypress run'
+            }
+        }
+        
+    }   /*---   FINE STAGE   ---*/
+}   /*---   FINE PIPELINE   ---*/
